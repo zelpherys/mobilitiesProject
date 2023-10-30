@@ -5,3 +5,12 @@ controllers:
 kernel:
     resource: ../src/Kernel.php
     type: annotation
+
+publications:
+    path: /publications
+    controller: App\Controller\PostController::index
+
+
+comment:
+    path: /comment/{id}
+    controller: App\Controller\PostController::addComment

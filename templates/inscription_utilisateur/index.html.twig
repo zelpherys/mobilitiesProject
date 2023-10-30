@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello InscriptionUtilisateurController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+    <section class="container bg-dark text-light mt-5 rounded">
+        <div class="row">
+            <div class="col">
+                <h1 class="text-center mt-2">INSCRIPTION</h1>
+                {{ form_start(utilisateurForm) }}
+                    <fieldset class="mb-3">
+                        <legend class="text-center mt-2">Mon identité</legend>
+
+                        
+                        {{ form_row(utilisateurForm.prenomUtilisateur) }}
+                        {{ form_row(utilisateurForm.emailUtilisateur) }}
+                        {{ form_row(utilisateurForm.telephone) }}
+                    </fieldset>
+
+                    {{ form_row(utilisateurForm.mdpUtlisateur, {
+                        label: 'Password'
+                    }) }}
+                    
+                    <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-dark btn-lg my-3">M'inscrire</button>
+                    <a href="{{ path('app_connexion') }}" class="btn btn-secondary btn-lg my-3">Me connecter</a>
+                    </div>
+                {{ form_end(utilisateurForm) }}            
+            </div>
+        </div>
+    </section>
+    {% endblock %}
+
