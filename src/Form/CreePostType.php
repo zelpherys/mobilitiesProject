@@ -38,6 +38,10 @@ class CreePostType extends AbstractType
         ->add('postConfirmer', HiddenType::class, [
             'data' => 0,
         ])
+        ->add('latPost', HiddenType::class)
+
+        ->add('longPost', HiddenType::class)
+        
         ->add('postInfirmer', HiddenType::class, [
             'data' => 0,
         ]);

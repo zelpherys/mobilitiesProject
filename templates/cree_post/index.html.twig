@@ -19,10 +19,54 @@
 
             {{ form_row(form.postConfirmer, {'attr': {'class': 'form-control'}}) }}
             {{ form_row(form.postInfirmer, {'attr': {'class': 'form-control'}}) }}
+            {{ form_row(form.latPost, {'attr': {'style': 'display: none;', 'id': 'cree_post_latPost'}}) }}
+            {{ form_row(form.longPost, {'attr': {'style': 'display: none;', 'id': 'cree_post_longPost'}}) }}
 
+
+{# <button id="getLocationButton">Obtenir la géolocalisation</button> #}
 <div class="text-center">
-    <button type="submit" class="btn btn-dark mt-2">Envoyer</button>
+    <button type="submit" class="btn btn-dark mt-2" >Envoyer</button>
 </div>
     {{ form_end(form) }}
 </div>
+
+{% endblock %}
+{% block javascripts %}
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    // Écoutez le clic sur le bouton
+   // document.getElementById("getLocationButton").addEventListener("click", function () {
+        // Vérifiez si la géolocalisation est prise en charge par le navigateur
+        if ("geolocation" in navigator) {
+            // Demandez la géolocalisation à l'utilisateur
+            navigator.geolocation.getCurrentPosition(function (position) {
+                // Récupérez la latitude et la longitude de la position
+                var latitude = position.coords.latitude;
+                var longitude = position.coords.longitude;
+
+                // Remplissez les champs cachés du formulaire avec les valeurs
+                document.getElementById("cree_post_latPost").value = latitude;
+                document.getElementById("cree_post_longPost").value = longitude;
+
+                // Vous pouvez également afficher la latitude et la longitude à l'utilisateur
+                alert("Latitude : " + latitude + "\nLongitude : " + longitude);
+            }, function (error) {
+                // En cas d'erreur
+                console.error("Erreur de géolocalisation : " + error.message);
+            });
+            navigator.geolocation.getCurrentPosition(function (position) {
+    var latitude = position.coords.latitude;
+    var longitude = position.coords.longitude;
+    console.log("Latitude : " + latitude);
+    console.log("Longitude : " + longitude);
+    // ...
+});
+        } else {
+            // Si la géolocalisation n'est pas prise en charge
+            alert("La géolocalisation n'est pas prise en charge par votre navigateur.");
+        }
+    });
+//});
+</script>
 {% endblock %}

@@ -34,6 +34,12 @@ class CreePostController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             // Déjà fait via le formulaire
             // $post->setIdUtlisateur($user);
+            $latPost = $form->get('latPost')->getData();
+            $longPost = $form->get('longPost')->getData();
+
+            $post->setLatPost((float)$latPost);
+            $post->setLongPost((float)$longPost);
+            
             $post->setIdUtlisateur($user);
             $entityManager = $this->managerRegistry->getManager();
             $entityManager->persist($post);
