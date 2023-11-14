@@ -28,7 +28,7 @@ class DashboardUtilisateurController extends AbstractController
         $this->tokenStorage = $tokenStorage;
     }
 
-    #[Route('/dashboard-utilisateur', name: 'dashboard_utilisateur')]
+    #[Route('/dashboard-utilisateur', name: 'app_dashboard_utilisateur')]
     public function index(): Response
     {
         $user = $this->getUser(); // Obtenez l'utilisateur actuellement connecté
